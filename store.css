@@ -1,0 +1,82 @@
+body {
+    margin: 0;
+    background-color: blue;
+    font-family: 'Anybody', Helvetica;
+    font-style: normal;
+    color: white;
+    font-size: 15px;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+@media (max-width: 500px){
+    body {
+        font-size: 12px;
+    }
+}
+
+#store {
+    color: aqua;
+}
+
+/* dettagli footer */
+footer {
+    background-color: darkblue;
+}
+
+
+
+#logo {
+    text-transform: uppercase;
+}
+
+
+nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    font-size: 14px;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: darkblue;
+}
+
+h2 {
+    margin-top: 100px;
+}
+
+#intro {
+    margin-bottom: 100px;
+}
+
+.image {
+    height: 300px;
+    width: 300px;
+}
+
+.add_cart{
+    padding: 10px;
+    background-color: white;
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+input[type=text] {
+    height: 30px;
+}
+
+input[type=submit] {
+    height: 30px;
+}
+
+/* Non va bene perché andrebbe a coprire le scritte del prodotto
+footer {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+*/

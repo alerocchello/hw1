@@ -1,0 +1,93 @@
+header {
+    background-image: url('./images/Sfondo.jpeg');
+    background-size: cover;
+    background-position: center;
+    height: 650px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 100px;
+}
+
+@media (max-width: 500px){
+    header {
+        height: 350px;
+        line-height: 1.2;
+        width: 100%;
+    }
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, .3);
+}
+
+header nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    font-size: 14px;
+    padding: 0;
+    display: flex;
+}
+
+nav h2,
+#menu a {
+    color: aqua;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color .3s ease;
+}
+
+#logo {
+    color: white;
+    text-shadow: 2px 2px 5px white;
+    font-family: 'Bebas Neue', Impact;
+    font-size: 80px;
+    letter-spacing: 4px;
+    z-index: 1;
+    text-decoration: none;
+}
+
+@media (max-width: 500px){
+    #logo {
+        font-size: 3em;
+    }
+}
+
+#menu {
+    background-color: blue;
+    width: 100%;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+@media (max-width: 500px){
+    #menu {
+        display: none;
+    }
+}
+
+#menu a:hover,
+#logo:hover {
+    cursor: pointer;
+}
+
+#menu a:hover {
+    color: rgba(0, 255, 255, .8);
+}

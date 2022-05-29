@@ -1,0 +1,55 @@
+#iconmenu {
+	width: 30px;
+	cursor: pointer;
+    background-color: white;
+    padding: 10px;
+    z-index: 1;
+    position: fixed;
+    right: 0;
+    top: 50%;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    z-index: 2;
+}
+
+#side_menu {
+    position: fixed;
+    right: 0;
+    top: 40%;
+	width: 0%;
+	background-color: white;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+	display: flex;
+    flex-direction: column;
+	overflow: hidden;
+	transition: all 0.5s ease-in-out;
+    z-index: 1;
+}
+
+.section {
+	width: 130px;
+	height: 40px;
+    text-transform: uppercase;
+    text-decoration: none;
+	margin: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: blue;
+    transition: color 0.2s ease;
+}
+
+#cmps {
+    display: none;
+}
+
+@media (max-width: 500px){
+    #cmps {
+        display: block;
+    }
+}
+
+.section:hover{
+    color: rgba(0, 255, 255, .8);
+}

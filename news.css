@@ -1,0 +1,114 @@
+body {
+    margin: 0;
+    background-color: blue;
+    font-family: 'Anybody', Helvetica;
+    font-style: normal;
+    color: white;
+    font-size: 15px;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+@media (max-width: 500px){
+    body {
+        font-size: 12px;
+    }
+}
+
+footer {
+    background-color: darkblue;
+}
+
+.title, h3 { 
+    color: aqua;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+h3 {
+    font-size: 15px;
+}
+
+.title {
+    margin-bottom: 100px;
+    text-decoration: none;
+}
+
+p {
+    line-height: 1.2;
+}
+
+.news img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.3s ease-in-out;
+}
+
+#news {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+}
+
+@media (max-width: 500px){
+    #news {
+        flex-direction: column;
+        align-items: center;
+    } 
+}
+
+.news {
+    width: calc(30% - 80px);
+    height: 500px;
+    transition: all 0.1s ease-in-out;
+    border-radius: 4px;
+}
+
+@media (max-width: 500px){
+    .news {
+        width: 80%;
+        margin-bottom: 10%;
+    }
+}
+
+.image {
+    width: 100%;
+    height: 60%;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.hidden {
+    display: none;
+}
+
+.event:hover,
+.news:hover,
+section h3:hover,
+a.button:hover,
+.album:hover,
+.player:hover,
+.link_statistics_title {
+    cursor: pointer;
+}
+
+.news:hover h3 {
+    text-decoration: underline;
+}
+
+.news:hover {
+    background-color: rgba(0, 0, 139, 0.3);
+}
+
+.event:hover img,
+.news:hover img{
+    transform: scale(1.1);
+}
+
