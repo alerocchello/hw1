@@ -83,11 +83,11 @@ const iconcart = document.querySelector("#iconcart");
 iconcart.addEventListener("click", generateCart);
 
 function generateCart(){
-    fetch("return_cart.php").then(onResponse).then(onFavorite);
+    fetch("return_cart.php").then(onResponse).then(onCart);
 }
 
 
-function onFavorite(json){
+function onCart(json){
 	const cart = document.querySelector('#divstore');
 	cart.innerHTML = '';
 	
