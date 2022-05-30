@@ -8,7 +8,7 @@
         <title>Home Page | AR Sport</title>
         <link rel="stylesheet" href="store.css">
         <script src="side_menu.js" defer></script>
-        <script src="store.js" defer></script>
+        <script src="cart.js" defer></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> <!-- Social nel footer-->
         <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Anybody&display=swap" rel="stylesheet">
@@ -17,9 +17,13 @@
     </head>
     <body>
 
+        <h1>Carrello</h1>
+
         <?php require 'side_menu.php'; echo $side_menu ?>
 
-    <section id = "products-view"></section>
+        <section id = "products-view"></section>
+
+        <?php require 'footer.php'; echo $footer ?>
     </body>
 
 </html>
