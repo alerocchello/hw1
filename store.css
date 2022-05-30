@@ -57,11 +57,15 @@ h2 {
     width: 300px;
 }
 
-.add_cart{
+.button_cart{
     padding: 10px;
     background-color: white;
     border-radius: 100%;
     cursor: pointer;
+}
+
+.button_cart:hover{
+    background-color: rgb(255, 255, 255, 0.9);
 }
 
 input[type=text] {
@@ -70,6 +74,11 @@ input[type=text] {
 
 input[type=submit] {
     height: 30px;
+}
+
+.product {
+    margin-top: 100px;
+    margin-bottom: 100px;
 }
 
 /* Non va bene perché andrebbe a coprire le scritte del prodotto
