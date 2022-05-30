@@ -2,7 +2,7 @@
 	require 'db_config.php';
 
     include 'authorization.php';
-    if (checkAuthorization()) {
+    if (!checkAuthorization()) {
         header('Location: home.php');
         exit;
     }
@@ -11,28 +11,25 @@
 	
 	$conn = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbname) or die("Errore: ".mysqli_connect_error());
 	
-	$userid = mysqli_real_escape_string($conn, $userid);
-	$productid = mysqli_real_escape_string($conn, $_POST['productid']);
+	$username = $_SESSION['username'];
 	
-	$out_query = "SELECT * FROM tshirts WHERE id = $productid";
-	$res = mysqli_query($conn, $out_query);
+	$out_query = "SELECT id_prodotto FROM carts WHERE username_utente = '$username'";
+	$id = mysqli_query($conn,$out_query) or die("Errore query") ;
 
-	if($res) {
-		if (mysqli_num_rows($res) > 0) {
-			$entry = mysqli_fetch_assoc($res);
-			
-			$returndata = array('ok' => true, 'team' => $entry['team'], 'url_copertina' => $entry['url_copertina'], 'prezzo' => $entry['prezzo']);
+	$tshirts = array();
 
-			echo json_encode($returndata);
-
-			mysqli_free_result($res);
-			mysqli_close($conn);
-			exit;
+	
+	if($id){
+		while($row = mysqli_fetch_object($id))
+		{
+			$strqry2 = "SELECT * from tshirts WHERE id ='$row->id_prodotto' ";
+			$dati_t = mysqli_query($conn,$strqry2) or die("Errore query") ;
+			$tshirts[] = mysqli_fetch_object($dati_t);
+	
 		}
 	}
 
-	mysqli_free_result($res);
+	mysqli_free_result($id);
 	mysqli_close($conn);
-	$returndata = array('ok' => false);
-	echo json_encode($returndata);
+	echo json_encode($tshirts);
 ?>
