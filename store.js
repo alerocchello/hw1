@@ -17,6 +17,7 @@ function generateProducts(event) {
 
 }
 
+let productid;
 function onJson(json) {
     console.log("json: ");
     console.log(json);
@@ -24,7 +25,10 @@ function onJson(json) {
     const store = document.querySelector("#divstore") 
     store.innerHTML = "";
 
-    for (product of json) { //Uso il for qualora nel DB ci fossero più prodotti della stessa squadra
+    for (const product of json) { //Uso il for qualora nel DB ci fossero più prodotti della stessa squadra
+
+        console.log("product");
+        console.log(product);
 
         const divproduct = document.createElement("div");
         divproduct.classList.add("product");
@@ -38,71 +42,34 @@ function onJson(json) {
         price.textContent = "Prezzo: " + product.prezzo + "€";
         const add_cart = document.createElement("img");
         add_cart.src = "./images/aggiungi_al_carrello.png";
-        add_cart.classList.add("add_cart");
-        add_cart.addEventListener("click", addCart);
-
+        add_cart.classList.add("button_cart");
+        add_cart.addEventListener("click", addToCart);
+        productid = product.id;
+        console.log("productid");
+        console.log(productid);
 
         divproduct.appendChild(image);
         divproduct.appendChild(team);
         divproduct.appendChild(price);
         divproduct.appendChild(add_cart);
 
-        divstore.appendChild(divproduct);
+        store.appendChild(divproduct);
     }
 }
 
-function addCart(event) {
+function addToCart(event) {
+    alert("Maglietta inserita nel carrello");
     button = event.currentTarget;
-    const formData = new FormData();
-    //Prendo l'id del prodotto
-    formData.append('productid', button.parentNode.dataset.id);
+    console.log("button");
+    console.log(button);
+    console.log("productid in addToCart");
+    console.log(productid);
     //Mando l'id tramite fetch
-    fetch("add_products.php", {method: 'post', body: formData});
+    console.log("Eseguo la fetch");
+    fetch("add_products.php?productid=" + productid);
+    console.log("fetch eseguita");
 }
 
 
 const search_team = document.querySelector("#search_team");
 search_team.addEventListener("submit", generateProducts);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-const iconcart = document.querySelector("#iconcart");
-iconcart.addEventListener("click", generateCart);
-
-function generateCart(){
-    fetch("return_cart.php").then(onResponse).then(onCart);
-}
-
-
-function onCart(json){
-	const cart = document.querySelector('#divstore');
-	cart.innerHTML = '';
-	
-	if(json.flag){
-		for(element of json.content){
-			const cover_url = element.url;
-			const block = document.createElement('div');
-			block.classList.add('block');
-			const img = document.createElement('img');
-			img.src = cover_url;
-			console.log(cover_url);
-			
-			block.appendChild(img);
-				
-			cart.appendChild(block);
-		}
-	}
-}
