@@ -3,16 +3,21 @@
 	require 'db_config.php';
 
     include 'authorization.php';
-    if (!$userid = checkAuthorization()) exit;
-	
+    if (!checkAuthorization()) exit;
+
+	$productid = urlencode($_GET['productid']); 
 	$conn = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbname) or die("Errore: ".mysqli_connect_error());
 
-	$userid = mysqli_real_escape_string($conn, $userid);
-	$productid = mysqli_real_escape_string($conn, $_POST['productid']);
-	$in_query = "INSERT INTO carts(id_utente, id_prodotto) VALUES($userid, $productid)";
-
-	$res = mysqli_query($conn, $in_query);
+	$username = $_SESSION['username'];
+	// $productid = mysqli_real_escape_string($conn, $_POST['productid']);
+	$_SESSION['productid'] = $productid;
 	
-	mysqli_free_result($res);
+
+	$in_query = "INSERT INTO `carts`(`username_utente`, `id_prodotto`) VALUES ('$username','$productid')";
+
+	$res = mysqli_query($conn, $in_query) or die(mysqli_error($conn));
+	
+	
+	
     mysqli_close($conn);
 ?>
